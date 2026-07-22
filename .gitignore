@@ -57,7 +57,7 @@ playwright/.cache/
 # Agents
 .claude/
 .agents/
-.agent/
+agent/
 skills-lock.json
 
 # Misc
