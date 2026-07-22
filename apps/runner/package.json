@@ -1,0 +1,27 @@
+{
+  "name": "@caseprac/runner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.744.0",
+    "@caseprac/db": "workspace:*",
+    "@caseprac/evaluator": "workspace:*",
+    "@caseprac/shared": "workspace:*",
+    "bullmq": "^5.37.0",
+    "dotenv": "^16.4.7",
+    "ioredis": "^5.4.2"
+  },
+  "devDependencies": {
+    "@caseprac/config": "workspace:*",
+    "@types/node": "^22.10.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.0"
+  }
+}

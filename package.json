@@ -1,0 +1,24 @@
+{
+  "name": "caseprac-monorepo",
+  "private": true,
+  "packageManager": "pnpm@11.15.1",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "db:generate": "pnpm --filter @caseprac/db db:generate",
+    "db:migrate": "pnpm --filter @caseprac/db db:migrate",
+    "db:seed": "pnpm --filter @caseprac/db db:seed",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "doctor": "npx react-doctor@latest"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
