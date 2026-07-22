@@ -111,24 +111,6 @@ CasePrac worker nodes run Playwright evaluations in isolated headless browser co
 
 ---
 
-## Self-Hosting with Docker Compose
-
-To deploy CasePrac on your own server or cloud infrastructure:
-
-```bash
-# 1. Clone repository
-git clone https://github.com/caseprac/caseprac.git
-cd caseprac
-
-# 2. Configure production credentials in .env
-cp .env.example .env
-
-# 3. Start full stack in detached mode
-docker compose up -d --build
-```
-
----
-
 ## License
 
 [GPL-3.0](LICENSE)
