@@ -13,7 +13,6 @@ export async function authRoutes(fastify: FastifyInstance) {
 
     if (!demoUser) {
       const [newUser] = await db.insert(users).values({
-        githubId: '1002',
         username: 'demodev',
         name: 'Demo Developer',
         email: 'dev@example.com',
@@ -23,26 +22,5 @@ export async function authRoutes(fastify: FastifyInstance) {
     }
 
     return { user: demoUser };
-  });
-
-  // Mock GitHub Auth endpoint for quick testing / dev
-  fastify.get('/auth/github/mock', async (request, reply) => {
-    let demoUser = await db.query.users.findFirst({
-      where: eq(users.username, 'demodev'),
-    });
-
-    if (!demoUser) {
-      const [newUser] = await db.insert(users).values({
-        githubId: '1002',
-        username: 'demodev',
-        name: 'Demo Developer',
-        email: 'dev@example.com',
-        role: 'user',
-      }).returning();
-      demoUser = newUser;
-    }
-
-    const token = fastify.jwt.sign({ userId: demoUser.id, role: demoUser.role });
-    return { token, user: demoUser };
   });
 }

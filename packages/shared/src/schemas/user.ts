@@ -5,7 +5,6 @@ export type UserRole = z.infer<typeof UserRoleSchema>;
 
 export const UserSchema = z.object({
   id: z.string().uuid(),
-  githubId: z.string(),
   username: z.string(),
   name: z.string().nullable(),
   email: z.string().email().nullable(),

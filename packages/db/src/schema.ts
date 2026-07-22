@@ -14,8 +14,7 @@ import type { TaskManifest } from '@caseprac/shared';
 // Users
 export const users = pgTable('users', {
   id: uuid('id').defaultRandom().primaryKey(),
-  githubId: text('github_id').notNull().unique(),
-  username: text('username').notNull(),
+  username: text('username').notNull().unique(),
   name: text('name'),
   email: text('email'),
   avatarUrl: text('avatar_url'),

@@ -44,7 +44,6 @@ export async function submissionRoutes(fastify: FastifyInstance) {
         userId = demoUser.id;
       } else {
         const [newUser] = await db.insert(users).values({
-          githubId: '1002',
           username: 'demodev',
           name: 'Demo Developer',
           email: 'dev@example.com',

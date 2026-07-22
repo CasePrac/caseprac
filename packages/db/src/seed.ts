@@ -9,7 +9,6 @@ async function seed() {
 
   // Seed Admin User
   const [adminUser] = await db.insert(users).values({
-    githubId: '1001',
     username: 'admin',
     name: 'CasePrac Admin',
     email: 'admin@caseprac.dev',
@@ -19,7 +18,6 @@ async function seed() {
 
   // Seed Demo User
   const [demoUser] = await db.insert(users).values({
-    githubId: '1002',
     username: 'demodev',
     name: 'Demo Developer',
     email: 'dev@example.com',
