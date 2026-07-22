@@ -72,6 +72,7 @@ export const challengeVersions = pgTable('challenge_versions', {
   taskManifest: jsonb('task_manifest').$type<TaskManifest>().notNull(),
   briefMarkdown: text('brief_markdown').notNull(),
   apiSpecYaml: text('api_spec_yaml'),
+  baselineAssets: jsonb('baseline_assets'),
   isPublished: boolean('is_published').default(false).notNull(),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
 }, (table) => [

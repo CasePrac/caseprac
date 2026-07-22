@@ -24,6 +24,7 @@
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:seed": "tsx src/seed.ts",
+    "db:import-task": "tsx src/scripts/import-task.ts",
     "clean": "rm -rf dist .drizzle"
   },
   "dependencies": {

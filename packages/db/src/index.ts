@@ -15,6 +15,7 @@ dotenv.config({ path: path.resolve(currentDir, '../../../.env') });
 
 export * from 'drizzle-orm';
 export * from './schema';
+export * from './importer';
 export { schema };
 
 export function createDb(connectionString?: string) {

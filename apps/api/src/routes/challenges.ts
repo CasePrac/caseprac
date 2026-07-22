@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import { createDb, eq, challenges, categories, tags, challengeVersions } from '@caseprac/db';
+import { createDb, eq, challenges, categories, tags, challengeVersions, importTaskKit } from '@caseprac/db';
 import { NotFoundError } from '@caseprac/shared';
 
 export async function challengeRoutes(fastify: FastifyInstance) {
@@ -50,5 +50,33 @@ export async function challengeRoutes(fastify: FastifyInstance) {
   fastify.get('/tags', async () => {
     const list = await db.select().from(tags);
     return { tags: list };
+  });
+
+  fastify.post('/challenges/import', async (request, reply) => {
+    const { localPath, repositoryUrl, taskSlug } = (request.body || {}) as {
+      localPath?: string;
+      repositoryUrl?: string;
+      taskSlug?: string;
+    };
+
+    if (!localPath && !repositoryUrl) {
+      return reply.status(400).send({ error: 'Either localPath or repositoryUrl must be provided' });
+    }
+
+    if (localPath) {
+      const result = await importTaskKit(db, { taskKitPath: localPath });
+      return {
+        success: true,
+        source: 'local',
+        challenge: result.challenge,
+        version: result.version,
+      };
+    }
+
+    return reply.status(501).send({
+      error: 'Remote tasks repository import is scheduled for future release',
+      repositoryUrl,
+      taskSlug,
+    });
   });
 }
